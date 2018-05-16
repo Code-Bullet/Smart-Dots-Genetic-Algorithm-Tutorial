@@ -60,7 +60,7 @@ class Dot {
       } else if (dist(pos.x, pos.y, goal.x, goal.y) < 5) {//if reached goal
 
         reachedGoal = true;
-      } else if (pos.x< 600 && pos.y < 310 && pos.x > 0 && pos.y > 300) {//if hit obstacle
+      } else if (pixels[int(pos.x) + int(pos.y) * 800] == color(0, 0, 255)) {//if hit obstacle
         dead = true;
       }
     }
