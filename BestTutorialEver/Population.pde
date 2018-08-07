@@ -3,9 +3,7 @@ class Population {
 
   float fitnessSum;
   int gen = 1;
-
   int bestDot = 0;//the index of the best dot in the dots[]
-
   int minStep = 1000;
 
   Population(int size) {
