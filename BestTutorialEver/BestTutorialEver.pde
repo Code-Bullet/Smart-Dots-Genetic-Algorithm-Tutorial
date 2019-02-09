@@ -1,18 +1,19 @@
 Population test;
 PVector goal  = new PVector(400, 10);
 
-public Obstacle[] obstacles = new Obstacle[2]; //initialize array of obstacles; set the amount of obstacles — in this case, 2
+public Obstacle[] obstacles = new Obstacle[3]; //initialize array of obstacles; set the amount of obstacles — in this case, 2
 
 
 
 void setup() {
   size(700, 700); //size of the window
-  frameRate(300);//increase this to make the dots go faster
-  test = new Population(1000);//create a new population with 1000 members
+  frameRate(200);//increase this to make the dots go faster
+  test = new Population(800);//create a new population with 1000 members
   
   /*Specify each obstacle here: */
   obstacles[0] = new Obstacle(0,200,600,10);
   obstacles[1] = new Obstacle(50,400,500,10);
+  obstacles[2] = new Obstacle(450, 500, 200, 10);
 }
 
 
@@ -28,8 +29,7 @@ void draw() {
   
   for (int i = 0; i < obstacles.length; i++) {
       obstacles[i].show();
-    }
-
+  }
 
   if (test.allDotsDead()) {
     //genetic algorithm

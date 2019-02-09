@@ -7,11 +7,11 @@ class Dot {
   boolean dead = false;
   boolean reachedGoal = false;
   boolean isBest = false;//true if this dot is the best dot from the previous generation
-
+  
   float fitness = 0;
 
   Dot() {
-    brain = new Brain(800);//new brain with 1000 instructions
+    brain = new Brain(750);//new brain with 1000 instructions
 
     //start the dots at the bottom of the window with a no velocity or acceleration
     pos = new PVector(width/2, height- 10);
@@ -36,7 +36,6 @@ class Dot {
   //-----------------------------------------------------------------------------------------------------------------------
   //moves the dot according to the brains directions
   void move() {
-
     if (brain.directions.length > brain.step) {//if there are still directions left then set the acceleration as the next PVector in the direcitons array
       acc = brain.directions[brain.step];
       brain.step++;
@@ -46,21 +45,26 @@ class Dot {
 
     //apply the acceleration and move the dot
     vel.add(acc);
-    vel.limit(5);//not too fast
+    vel.limit(6);//not too fast
     pos.add(vel);
   }
 
   //-------------------------------------------------------------------------------------------------------------------
   //calls the move function and check for collisions and stuff
   void update() {
+    boolean hitObstacle = false;
+    for (int i = 0; i < obstacles.length; ++i) {
+      Obstacle o = obstacles[i];
+      if (pos.x > o.x0 && pos.x < o.x1 && pos.y > o.y0 && pos.y < o.y1) hitObstacle = true;
+    }
+    
     if (!dead && !reachedGoal) {
       move();
       if (pos.x< 2|| pos.y<2 || pos.x>width-2 || pos.y>height -2) {//if near the edges of the window then kill it 
         dead = true;
       } else if (dist(pos.x, pos.y, goal.x, goal.y) < 5) {//if reached goal
-
         reachedGoal = true;
-      } else if (pos.x< 600 && pos.y < 310 && pos.x > 0 && pos.y > 300) {//if hit obstacle
+      } else if (hitObstacle) {//if hit obstacle
         dead = true;
       }
     }
