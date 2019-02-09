@@ -11,7 +11,7 @@ class Dot {
   float fitness = 0;
 
   Dot() {
-    brain = new Brain(1000);//new brain with 1000 instructions
+    brain = new Brain(800);//new brain with 1000 instructions
 
     //start the dots at the bottom of the window with a no velocity or acceleration
     pos = new PVector(width/2, height- 10);

@@ -3,8 +3,8 @@ PVector goal  = new PVector(400, 10);
 
 
 void setup() {
-  size(800, 800); //size of the window
-  frameRate(100);//increase this to make the dots go faster
+  size(700, 700); //size of the window
+  frameRate(300);//increase this to make the dots go faster
   test = new Population(1000);//create a new population with 1000 members
 }
 
